@@ -491,13 +491,7 @@ a.twitter {
 a.twitter:hover,a.facebook:hover {
 	opacity:0.5;
 }
-a.facebook {
-	width: 25px;
-	height: 25px;
-	background: url(../images/follow.png) no-repeat -25px 0px;
-	display: inline-block;
-	  vertical-align: text-bottom;
-}
+
 /*-- online-strip --*/
 h3.head.text-center {
     font-size: 35px;
@@ -2758,19 +2752,6 @@ p.right {
 	}
 	.header-top-strip {
 		padding: 5px 0 10px 0;
-	}
-	a.twitter {
-		margin: 0 0.3em;
-		width: 20px;
-		height: 20px;
-		background: url(../images/follow.png) no-repeat 0px 3px;
-		background-size: 35px;
-	}
-	a.facebook {
-		width: 20px;
-		height: 20px;
-		background: url(../images/follow.png) no-repeat -18px 2px;
-		background-size: 35px;
 	}
 	.online-strip h3 {
 		font-size: 1.2em;
