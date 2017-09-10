@@ -164,7 +164,7 @@ a.simpleCart_empty {
 }
 .navbar {
     position: relative;
-    min-height: 50px;
+    height: 20px;
     margin-bottom: 0px;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -2205,7 +2205,8 @@ p.right {
 }
 @media screen and (max-width: 1024px) {	
 	.navbar-header {
-		width: 17%;
+		width: 100%;
+        margin-top: 0;
 	}
 	.banner {
 		min-height: 491px;
@@ -2850,7 +2851,7 @@ p.right {
 	.navbar-toggle {
 		padding: 7px 7px;
 		margin-top: 8px;
-		margin-right: 0px;
+		margin-right: 2px;
 		margin-bottom: 8px;
 	}
 	.banner-top {
