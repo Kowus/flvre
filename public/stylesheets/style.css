@@ -672,13 +672,15 @@ a.like_name {
 /*-- news-letter-starts-here --*/
 .news-letter {
     background-color: #F7F7F7;
+    background-image: url("../images/floor.jpg");
+    background-attachment: fixed;
     padding: 35px 0;
 }
 .join h6 {
     font-size: 22px;
     font-weight: 400;
     color: #000;
-    float: left;
+    /*float: left;*/
     margin-right: 5%;
 	margin-top:10px;
     letter-spacing: 1px;
@@ -1526,7 +1528,8 @@ ul.breadcrumbs li{
 	color:#000;
 }
 ul.breadcrumbs li.women{
-	    background: yellow;
+    color: darkred;
+    font-weight: 700;
     font-size: 14px;
     padding: 3px;
 }
