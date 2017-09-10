@@ -1,6 +1,6 @@
 module.exports = function (app, passport) {
     app.get('/', function (req, res, next) {
-        var products = require('./clothes.js');
+        var products = require('./clothes');
         res.render('index', {title: 'FLVRE', products: products});
     });
 
@@ -12,7 +12,11 @@ module.exports = function (app, passport) {
     });
     app.get('/profile', isLoggedIn, function (req, res, next) {
         res.json(req.user);
-    })
+    });
+    app.get('/products',function (req, res, next) {
+        var products = require('./clothes');
+        res.json(products)
+    });
 
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
