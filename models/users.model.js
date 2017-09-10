@@ -42,7 +42,7 @@ var userSchema = new mongoose.Schema({
 
 
 userSchema.methods.generateHash = function (password) {
-    const userPassword = Buffer.from(password);
+    var userPassword = Buffer.from(password);
     pwd.hash(userPassword, function (err, hash) {
         if (err) throw err;
 

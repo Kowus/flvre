@@ -3033,3 +3033,12 @@ p.right {
 		font-size: 13px;
 	}
 }
+.btn-facebook{
+    color: #3b5998;
+    border-color: #3b5998;
+    background-color:transparent;
+}
+.btn-facebook:hover{
+    color: #fff;
+    background-color: #3b5998;
+}

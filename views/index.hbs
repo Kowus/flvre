@@ -23,7 +23,7 @@
             </header>
             {{#each products as | product productIndex |}}
                 <div class="col-md-4 product simpleCart_shelfItem text-center">
-                    <a href="#"><img src="{{product.src}}" alt="{{product.name}} at ${{product.price}}"></a>
+                    <a href="#"><img src="{{product.images.thumb}}" alt="{{product.name}} at ${{product.price}}"></a>
                     <div class="mask">
                         <a href="#">Quick View</a>
                     </div>
