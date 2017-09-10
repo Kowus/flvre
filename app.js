@@ -13,7 +13,7 @@ var hbs = require('hbs');
 var app = express();
 var mongoose = require('mongoose');
 
-mongoose.connect(configDb);
+mongoose.connect(configDb.url);
 
 hbs.registerPartials('./views/partials');
 
@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes/routes')(app, passport)
+require('./routes/routes')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

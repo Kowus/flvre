@@ -8,12 +8,10 @@ module.exports = function (passport) {
     });
     //	Deserialize User
     passport.deserializeUser(function (req, id, done) {
-            User.findById(id, function (err, user) {
-                done(err, user);
-            });
+        User.findById(id, function (err, user) {
+            done(err, user);
+        });
     });
-
-
 
 
     passport.use('local-signup', new LocalStrategy({
@@ -43,18 +41,35 @@ module.exports = function (passport) {
 
                         //	save the user
                         newUser.save(function (err) {
-                            if (err)throw err;
+                            if (err) throw err;
                             return done(null, newUser);
                         });
                     }
                 });
             });
-        }));
+        }
+    ));
 
 
+    passport.use('local-login', new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true
+        },
+        function (req, email, password, done) {
+            //	If user exists
+            User.findOne({'auth.local.email': email}, function (err, user) {
+                if (err) return done(err);
+                //	If user doesn't exist
+                if (!user) return done(null, false, req.flash('loginMessage', 'No user found'));
 
-
-
+                //	If user found but password is wrong
+                if (!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Username or Password incorrect'));
+                req.session.user_role = "user";
+                return done(null, user);
+            });
+        }
+    ));
 
 
 };
