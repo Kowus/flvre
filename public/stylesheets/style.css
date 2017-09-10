@@ -113,22 +113,8 @@ a.simpleCart_empty {
     font-size: 30px;
     letter-spacing: 2px;
 }
-/*.logo a span {
-	color: #000;
-    font-size: 35px;
-    border: 2px solid #000;
-    border-radius: 50px;
-    width: 50px;
-    !*display: block;*!
-    text-align: center;
-    !*float: right;*!
-    padding: 2px 0 0 4px;
-    height: 50px;
-    vertical-align: middle;
-    margin-right: 3px;
-}*/
 .banner-top {
-	padding-top: 25px;
+	padding-top: 5px;
     background-color: #f8f8f8;
 }
 .inner-head {
@@ -431,7 +417,10 @@ ul.multi-column-dropdown h6 {
   margin: 20px 0;
 }
 .shop {
-    float: right;
+    /*float: right;*/
+    position: absolute;
+    right: 5vw;bottom: 20%;
+
 }
 .shop a {
 	text-decoration:none;
@@ -2730,7 +2719,7 @@ p.right {
 		font-size: 20px;
 	}
 	.banner-top {
-		padding-top: 20px;
+		padding-top: 5px;
 	}
 	.banner {
 		min-height: 227px;
@@ -2855,7 +2844,7 @@ p.right {
 		margin-bottom: 8px;
 	}
 	.banner-top {
-		padding-top: 15px;
+		padding-top: 5px;
 	}
 	.banner-bottom-left h2 {
 		font-size: 18px;
