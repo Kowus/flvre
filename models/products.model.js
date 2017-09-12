@@ -18,6 +18,7 @@ var productShema = mongoose.Schema({
     qty: Number,
     tags: Array,
     description: String,
+    shortdes:String,
     specifications: {
         sizes: [{
             class: Array,

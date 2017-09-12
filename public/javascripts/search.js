@@ -1,6 +1,9 @@
 $(function () {
 
     $("#search-bar").autocomplete({
+        classes:{
+            "ui-autocomplete":"highlight"
+        },
         source: function (request, response) {
             $.ajax({
                 url: "/search_member",
