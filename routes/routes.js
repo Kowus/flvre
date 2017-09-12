@@ -3,7 +3,7 @@ module.exports = function (app, passport) {
     app.get('/', function (req, res, next) {
         Products.aggregate([
             {$sort: {"dateAdded": -1}},
-            {$limit:12}
+            {$limit: 12}
         ], function (err, products) {
             if (err) {
                 return res.send("Error Occured." + err)
@@ -32,20 +32,22 @@ module.exports = function (app, passport) {
         var productCount = [];
         var page = req.query.page || 1;
         Products.aggregate([
-            {$sort:{dateAdded:-1}},
-            {$limit:12}
+            {$sort: {dateAdded: -1}},
+            {$skip: 12 * (page - 1)},
+            {$limit: 12}
         ], function (err, products) {
             if (err) {
                 return res.send("Error Occured.")
             }
             Products.count({}, function (err, count) {
-                if(err) return console.error(err);
-                if (count <= 12)productCount.push(1);
+                if (err) return console.error(err);
+                if (count <= 12) productCount.push(1);
                 else {
-                for(var i = 1; i <= count / 12; i ++){
-                    productCount.push(i)
-                }}
-                res.render('products', {products: products, count: productCount, currPage:page});
+                    for (var i = 1; i <= count / 12; i++) {
+                        productCount.push(i)
+                    }
+                }
+                res.render('products', {products: products, count: productCount, currPage: page});
             });
 
         });
