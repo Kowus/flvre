@@ -64,7 +64,7 @@ module.exports = function (passport) {
                 if (!user) return done(null, false, req.flash('loginMessage', 'No user found'));
 
                 //	If user found but password is wrong
-                if (!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Username or Password incorrect'));
+                if (!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Email or Password incorrect'));
                 req.session.user_role = "user";
                 return done(null, user);
             });

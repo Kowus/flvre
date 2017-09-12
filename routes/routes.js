@@ -1,21 +1,44 @@
+var Products = require('../models/products.model');
+
 module.exports = function (app, passport) {
     app.get('/', function (req, res, next) {
-        var products = require('./clothes');
-        res.render('index', {title: 'FLVRE', products: products});
+        Products.find({}, function (err, products) {
+            if (err) {
+                return res.send("Error Occured.")
+            }
+            Products.find({featured: true}, function (err, featured) {
+                if (err) {
+                    return res.send("Error Occured.")
+                }
+                res.render('index', {title: 'FLVRE', products: products, featured: featured});
+            });
+        });
     });
 
-    app.get('/login', isNotLoggedIn,function (req, res, next) {
-        res.render('login', {title:'FLVRE: Login'});
+    app.get('/login', isNotLoggedIn, function (req, res, next) {
+        res.render('login', {title: 'FLVRE: Login'});
     });
     app.get('/signup', isNotLoggedIn, function (req, res, next) {
-        res.render('signup', {title:'FLVRE: Signup'});
+        res.render('signup', {title: 'FLVRE: Signup'});
     });
     app.get('/profile', isLoggedIn, function (req, res, next) {
         res.json(req.user);
     });
-    app.get('/products',function (req, res, next) {
-        var products = require('./clothes');
-        res.json(products)
+    app.get('/products', function (req, res, next) {
+        Products.find({}, function (err, products) {
+            if (err) {
+                return res.send("Error Occured.")
+            }
+            res.json(products);
+        });
+    });
+    app.get('/products/:id', function (req, res, next) {
+        Products.findOne({_id: req.params.id}, function (err, product) {
+            if (err) {
+                return res.send("Error Occured.")
+            }
+            res.json(product);
+        });
     });
 
     // process the login form
@@ -24,13 +47,17 @@ module.exports = function (app, passport) {
         failureRedirect: '/login',
         failureFlash: true
     }));
-
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect: '/profile',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
 };
 
-var needsGroup = function(group) {
+var needsGroup = function (group) {
     return [
         passport.authenticate('local-login'),
-        function(req, res, next) {
+        function (req, res, next) {
             if (req.user && req.user.group === group)
                 next();
             else

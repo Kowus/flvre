@@ -3068,3 +3068,12 @@ p.right {
     background-color: #dd4b39;
     border-color: #fff;
 }
+label{
+    color: red;
+}
+input[required]::before{
+    content: "* ";
+}
+.required::before{
+    content: "* ";
+}

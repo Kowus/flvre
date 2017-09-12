@@ -68,6 +68,9 @@ userSchema.methods.generateHash = function (password) {
     });
 };
 
+
+
+
 userSchema.methods.validPassword = function (password) {
   pwd.verify(Buffer.from(password), this.auth.local.password, function (err, result) {
       return result === securePassword.VALID;
