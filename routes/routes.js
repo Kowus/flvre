@@ -24,6 +24,10 @@ module.exports = function (app, passport) {
     app.get('/profile', isLoggedIn, function (req, res, next) {
         res.json(req.user);
     });
+    app.get('/profiler', needsGroup('user'), function (req, res, next) {
+        res.json(req.user);
+    });
+
     app.get('/products', function (req, res, next) {
         Products.find({}, function (err, products) {
             if (err) {

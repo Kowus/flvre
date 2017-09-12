@@ -31,7 +31,7 @@ var userSchema = new mongoose.Schema({
             profile_photo: String
         }
     },
-    role:{type:String, default:'user'},
+    group:{type:String, default:'user'},
     reviews:[{review_id:mongoose.Schema.Types.ObjectId}],
     cart:[{
         item_id:mongoose.Schema.Types.ObjectId,
