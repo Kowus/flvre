@@ -35,10 +35,10 @@ module.exports = function (passport) {
 
                         //	set User's local credentials
                         newUser.auth.local.email = email;
-                        newUser.auth.local.password = newUser.generateHash(password);
+                        newUser.auth.local.password = req.body.password;
                         newUser.auth.local.firstname = req.body.firstname;
                         newUser.auth.local.lastname = req.body.lastname;
-
+                        console.log(newUser.auth.local);
                         //	save the user
                         newUser.save(function (err) {
                             if (err) throw err;
@@ -65,7 +65,6 @@ module.exports = function (passport) {
 
                 //	If user found but password is wrong
                 if (!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Email or Password incorrect'));
-                req.session.user_role = "user";
                 return done(null, user);
             });
         }

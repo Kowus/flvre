@@ -23,11 +23,11 @@
             </header>
             {{#each products as | product productIndex |}}
                 <div class="col-md-4 product simpleCart_shelfItem text-center">
-                    <a href="#"><img src="{{product.images.thumb}}" alt="{{product.name}} at ${{product.price}}"></a>
+                    <a href="/products/id/{{product._id}}"><img src="{{product.images.thumb}}" alt="{{product.name}} at ${{product.price}}"></a>
                     <div class="mask">
-                        <a href="#">Quick View</a>
+                        <a href="/products/id/{{product._id}}">Quick View</a>
                     </div>
-                    <a class="product_name" href="#">{{product.name}}</a>
+                    <a class="product_name" href="/products/id/{{product._id}}">{{product.name}}</a>
                     <p><a class="item_add" href="#"><i></i> <span class="item_price">{{product.price}}</span></a></p>
                 </div>
             {{/each}}
@@ -41,9 +41,9 @@
         <h3 class="like text-center">Featured Collection</h3>
         <ul id="flexiselDemo3">
             {{#each featured as |item itemIndex|}}
-            <li><a href="/products/{{item._id}}"><img src="{{item.images.thumb}}" class="img-responsive" alt="{{item.name}}"/></a>
+            <li><a href="/products/id/{{item._id}}"><img src="{{item.images.thumb}}" class="img-responsive" alt="{{item.name}}"/></a>
                 <div class="product liked-product simpleCart_shelfItem">
-                    <a class="like_name" href="/products/{{item._id}}">{{item.name}}</a>
+                    <a class="like_name" href="/products/id/{{item._id}}">{{item.name}}</a>
                     <p><a class="item_add" href="#"><i></i> <span class=" item_price">${{item.price}}</span></a></p>
                 </div>
             </li>

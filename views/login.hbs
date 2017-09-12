@@ -31,14 +31,15 @@
                 <div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
                     <h3>REGISTERED CUSTOMERS</h3>
                     <p>If you have an account with us, please log in.</p>
+                    {{#if message}}<p>{{message}}</p>{{/if}}
                     <form method="post" action="/login">
                         <div>
                             <span>Email Address<label>*</label></span>
-                            <input type="email" required name="email">
+                            <input type="email" required name="email" placeholder="email">
                         </div>
                         <div>
                             <span>Password<label>*</label></span>
-                            <input type="password" required name="password">
+                            <input type="password" required name="password" placeholder="password">
                         </div>
                         <a class="forgot" href="#">Forgot Your Password?</a>
                         <input type="submit" value="Login">
