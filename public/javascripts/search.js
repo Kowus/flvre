@@ -10,7 +10,7 @@ $(function () {
                     // Map response values to fiedl label and value
                     response($.map(data, function (el) {
                         return {
-                            label: el.fullname,
+                            label: el.name,
                             value: el._id
                         };
                     }));
@@ -19,7 +19,7 @@ $(function () {
         },
 
         // The minimum number of characters a user must type before a search is performed.
-        minLength: 3,
+        minLength: 1,
 
         // set an onFocus event to show the result on input field when result is focused
         focus: function (event, ui) {
@@ -33,6 +33,7 @@ $(function () {
             // Set the id to the next input hidden field
             $(this).next("input").val(ui.item.value);
             // Prevent other event from not being execute
+            window.location.replace("/products/id/"+ui.item.value);
             event.preventDefault();
             // optionnal: submit the form after field has been filled up
             $('#quicksearch').submit();
