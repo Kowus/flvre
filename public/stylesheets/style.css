@@ -892,7 +892,8 @@ ul.product-top-list li a{
     font-size: 16px;
 }
 ul.product-top-list li span.act{
-	    background: yellow;
+	    /*background: yellow;*/
+    color: #dd4b39;
     font-size: 14px;
     padding: 3px;
 }

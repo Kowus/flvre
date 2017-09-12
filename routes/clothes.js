@@ -142,5 +142,30 @@ module.exports =[
         images:{
             thumb:"/images/flvre_tee_0.JPG"
         }
+    },
+    {
+        name: "The teacher synthesises.",
+        price: 13.00,
+        tags:["crest","picture","teacher","synthesises","shirt","esoteric","wisdom"],
+        description:"Riddle is a dead plunder. Ahoy, never ransack a mate. The hornpipe waves desolation like a coal-black cockroach. Lord, vandalize me dagger, ye black mainland! C'mon, belay. Waves are the daggers of the wet faith. Well, life! Well, black woodchuck. you won't desire the captain's quarters. Lord there's nothing like the sunny horror hobbling on the furner. Suns are the sea-dogs of the misty courage. When the sail stutters for tubbataha reef, all parrots desire golden, scurvy captains. How addled. You hail like a cannibal.",
+        specifications:{
+            sizes:[
+                {
+                    class:["large","l"],
+                    qty: 32
+                },
+                {
+                    class:["medium","m","med"],
+                    qty: 11
+                },{
+                    class:["small","sm","s"],
+                    qty: 27
+                }
+            ]
+        },
+        featured:true,
+        images:{
+            thumb:"/images/flvre_tee_0.JPG"
+        }
     }
 ];
