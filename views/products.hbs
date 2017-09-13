@@ -20,23 +20,10 @@
             <div class="tags">
                 <h4 class="tag_head">Tags Widget</h4>
                 <ul class="tags_links">
-                    <li><a href="#">Kitesurf</a></li>
-                    <li><a href="#">Super</a></li>
-                    <li><a href="#">Duper</a></li>
-                    <li><a href="#">Theme</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Equipment</a></li>
-                    <li><a href="#">Best</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Apparel</a></li>
-                    <li><a href="#">Super</a></li>
-                    <li><a href="#">Duper</a></li>
-                    <li><a href="#">Theme</a></li>
-                    <li><a href="#">Responsive</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Equipment</a></li>
+                    {{#each tags as |tag|}}
+                        <li><a href="#">{{tag}}</a></li>
+                    {{/each}}
+
                 </ul>
 
             </div>
@@ -88,14 +75,17 @@
                 <div class="pages">
                     <div class="limiter visible-desktop">
                         <label>Show</label>
-                        <select>
-                            <option value="" selected="selected">
+                        <select name="limit">
+                            <option value="9">
+                                9
+                            </option>
+                            <option value="12" selected>
                                 12
                             </option>
-                            <option value="">
+                            <option value="15">
                                 15
                             </option>
-                            <option value="">
+                            <option value="30">
                                 30
                             </option>
                         </select> per page
@@ -127,7 +117,7 @@
                             </div>
                         </a>
                         <div class="cbp-vm-details">
-                            Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
+                            {{product.shortdes}}
                         </div>
                         <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
                     </li>

@@ -30,6 +30,7 @@ module.exports = function (app, passport) {
 
     app.get('/products', function (req, res, next) {
         var productCount = [];
+        var tags = [];
         var page = req.query.page || 1;
         Products.aggregate([
             {$sort: {dateAdded: -1}},
@@ -51,7 +52,14 @@ module.exports = function (app, passport) {
                         productCount.push(productCount[productCount.length-1]+1);
                     }
                 }
-                res.render('products', {products: products, count: productCount, currPage: page});
+                products.forEach(function (product) {
+                    product.tags.forEach(function (tag) {
+                        if(!tags.includes(tag)){
+                            tags.push(tag);
+                        }
+                    });
+                });
+                res.render('products', {products: products, count: productCount, currPage: page, tags:tags});
             });
 
         });
