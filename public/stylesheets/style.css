@@ -674,6 +674,8 @@ a.like_name {
     background-color: #F7F7F7;
     background-image: url("../images/floor.jpg");
     background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 35px 0;
 }
 .join h6 {
@@ -805,13 +807,13 @@ ul.product-list li a:hover{
 }
 .offer{
 	position:absolute;
-	bottom: 13%;
-	right: 2%;
+	bottom: 5%;
+	right: 10%;
 }
 .offer p{
 	font-size:30px;
-	color:#fff;
-	background:rgba(129, 98, 99, 0.73);
+    background:rgba(255,255,255,0.48);
+	color:rgba(0, 0, 0, 0.73);
 	padding: 15px 8px;
 	border-radius:50%;
 	-webkit-border-radius:50%;
@@ -820,9 +822,8 @@ ul.product-list li a:hover{
 	-ms-border-radius:50%;
 	font-weight:400;
 }
-.offer small{
-	color: #7C7C7C;
-	font-size: 18px;
+.offer sup, .offer sub{
+    font-size: .4em;
 }
 .tags{
 	list-style:none;
@@ -1159,6 +1160,10 @@ ul.women_pagenation li.active a, ul.women_pagenation li a:hover {
 	-moz-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
+ul.pagination li.disabled a:hover{
+    color: #fff;
+    background-color: #777;
+}
 .product-listy{
 	background:#9E9C9C;
 }
@@ -1193,11 +1198,6 @@ ul.product-list li a:hover{
 .latest-bis {
 	margin: 1.5em 0;
 	position:relative;
-}
-.offer{
-	position:absolute;
-	bottom: 13%;
-	right: 2%;
 }
 ul.tags_links{
 	padding:0;

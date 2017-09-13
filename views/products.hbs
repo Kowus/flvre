@@ -11,10 +11,9 @@
                 </ul>
             </div>
             <div class="latest-bis">
-                <img src="/images/l4.jpg" class="img-responsive" alt=""/>
+                <img src="/images/black_tee.JPG" class="img-responsive" alt=""/>
                 <div class="offer">
-                    <p>40%</p>
-                    <small>Top Offer</small>
+                    <p>40<sup>%</sup></p>
                 </div>
             </div>
             <div class="tags">
@@ -58,77 +57,71 @@
                             <a href=""><img src="/images/arrow2.gif" alt="" class="v-middle"></a>
                         </div>
                     </div>
-                    <ul class="women_pagenation">
+                    <ul class="women_pagenation pagination">
                         <li>Page:</li>
                         {{#each count as |ct ctIndex|}}
-                            <li class="{{#compare ct ../currPage operator="=="}}active disabled{{/compare}}"><a href="/products/?page={{ct}}">{{ct}}</a></li>
+                            <li title="page {{ct}}" class="{{#compare ct ../currPage operator="=="}}active disabled{{/compare}}"><a href="/products?page={{ct}}&show={{../limit}}" id="page{{ct}}">{{ct}}</a></li>
                         {{/each}}
 
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-                <div class="cbp-vm-options">
-                    <a href="#" id="myGrid" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
-                    <a href="#" id="myList" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
-                </div>
-                <div class="pages">
-                    <div class="limiter visible-desktop">
-                        <label>Show</label>
-                        <select name="limit">
-                            <option value="9">
-                                9
-                            </option>
-                            <option value="12" selected>
-                                12
-                            </option>
-                            <option value="15">
-                                15
-                            </option>
-                            <option value="30">
-                                30
-                            </option>
-                        </select> per page
+                <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                    <div class="cbp-vm-options">
+                        <a href="#" id="myGrid" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
+                        <a href="#" id="myList" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
                     </div>
-                </div>
-                <div class="clearfix"></div>
-            <ul>
-                {{#each products as |product productIndex|}}
-                    <li>
-                        <a class="cbp-vm-image" href="/products/id/{{product._id}}">
-                            <div class="simpleCart_shelfItem">
-                                <div class="view view-first">
-                                    <div class="inner_content clearfix">
-                                        <div class="product_image">
-                                            <img src="{{product.images.thumb}}" class="img-responsive" alt=""/>
-                                            <div class="mask">
-                                                <div class="info">Quick View</div>
-                                            </div>
-                                            <div class="product_container">
-                                                <div class="cart-left">
-                                                    <p class="title text-uppercase" style="letter-spacing: 1px;">{{product.name}}</p>
+                    <div class="pages">
+                        <div class="limiter visible-desktop">
+                            <label>Show</label>
+                            <select title="Items to show per page" name="limit" id="limit">
+                                <!-- Todo: Find a more efficient way to do this-->
+                                <option value="6" {{#compare limit 6 operator="=="}}selected{{/compare}}>6</option>
+                                <option value="12" {{#compare limit 12 operator="=="}}selected{{/compare}}>12</option>
+                                <option value="24" {{#compare limit 24 operator="=="}}selected{{/compare}}>24</option>
+                                <option value="36" {{#compare limit 36 operator="=="}}selected{{/compare}}>36</option>
+                            </select> per page
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <ul>
+                        {{#each products as |product productIndex|}}
+                            <li>
+                                <a class="cbp-vm-image" href="/products/id/{{product._id}}">
+                                    <div class="simpleCart_shelfItem">
+                                        <div class="view view-first">
+                                            <div class="inner_content clearfix">
+                                                <div class="product_image">
+                                                    <img src="{{product.images.thumb}}" class="img-responsive" alt=""/>
+                                                    <div class="mask">
+                                                        <div class="info">Quick View</div>
+                                                    </div>
+                                                    <div class="product_container">
+                                                        <div class="cart-left text-center">
+                                                            <p class="title text-uppercase" style="letter-spacing: 1px;">{{product.name}}</p>
+                                                        </div>
+                                                        <div class="pricey badge badge-lg"><span class="item_price">${{product.price}}</span></div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="pricey badge badge-lg"><span class="item_price">${{product.price}}</span></div>
-                                                <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
+                                </a>
+                                <div class="cbp-vm-details">
+                                    {{product.shortdes}}
                                 </div>
-                            </div>
-                        </a>
-                        <div class="cbp-vm-details">
-                            {{product.shortdes}}
-                        </div>
-                        <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-                    </li>
-                {{/each}}
+                                <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
+                            </li>
+                        {{/each}}
 
-                </ul>
+                    </ul>
+                </div>
+                <script src="/javascripts/cbpViewModeSwitch.js" type="text/javascript"></script>
+                <script src="/javascripts/classie.js" type="text/javascript"></script>
             </div>
-            <script src="/javascripts/cbpViewModeSwitch.js" type="text/javascript"></script>
-            <script src="/javascripts/classie.js" type="text/javascript"></script>
+            <div class="clearfix"></div>
         </div>
         <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
 </div>

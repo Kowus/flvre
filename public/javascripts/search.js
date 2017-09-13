@@ -1,8 +1,15 @@
 $(function () {
+    $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (!results) return null;
+        else return results[1];
 
+    };
+    var pg = $.urlParam("page") || 1;
+    $("#page"+pg).click(function () {return false;});
     $("#search-bar").autocomplete({
-        classes:{
-            "ui-autocomplete":"highlight"
+        classes: {
+            "ui-autocomplete": "highlight"
         },
         source: function (request, response) {
             $.ajax({
@@ -36,7 +43,7 @@ $(function () {
             // Set the id to the next input hidden field
             $(this).next("input").val(ui.item.value);
             // Prevent other event from not being execute
-            window.location.replace("/products/id/"+ui.item.value);
+            window.location.replace("/products/id/" + ui.item.value);
             event.preventDefault();
             // optionnal: submit the form after field has been filled up
             $('#quicksearch').submit();
@@ -46,5 +53,14 @@ $(function () {
     $('.cbp-vm-options').click(function () {
         $('#myList, #myGrid').toggleClass('cbp-vm-selected');
     });
+    $("#limit").click(function () {
+        var page = $.urlParam("page") || 1;
+        var show = $.urlParam("show") || 12;
+        var newShow = Number($("#limit option:selected").text().trim());
+        if (newShow != show) {
+            window.location.replace(window.location.pathname + "?page=" + page + "&show=" + newShow);
+        }
+    });
+
 
 });

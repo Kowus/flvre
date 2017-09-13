@@ -31,35 +31,40 @@ module.exports = function (app, passport) {
     app.get('/products', function (req, res, next) {
         var productCount = [];
         var tags = [];
+        var show = Number(req.query.show) || 12;
         var page = req.query.page || 1;
         Products.aggregate([
             {$sort: {dateAdded: -1}},
-            {$skip: 12 * (page - 1)},
-            {$limit: 12}
+            {$skip: show * (page - 1)},
+            {$limit: show}
         ], function (err, products) {
             if (err) {
-                return res.send("Error Occured.")
+                return res.send("Error Occured." + err)
             }
             Products.count({}, function (err, count) {
                 if (err) return console.error(err);
-                if (count <= 12) productCount.push(1);
+                if (count <= show) productCount.push(1);
                 else {
-                    var myDP = count%12;
-                    for (var i = 1; i <= count / 12; i++) {
+                    var myDP = count % show;
+                    for (var i = 1; i <= count / show; i++) {
                         productCount.push(i)
                     }
-                    if(myDP !== 0){
-                        productCount.push(productCount[productCount.length-1]+1);
+                    if (myDP !== 0) {
+                        productCount.push(productCount[productCount.length - 1] + 1);
                     }
                 }
                 products.forEach(function (product) {
                     product.tags.forEach(function (tag) {
-                        if(!tags.includes(tag)){
+                        if (!tags.includes(tag)) {
                             tags.push(tag);
                         }
                     });
                 });
-                res.render('products', {products: products, count: productCount, currPage: page, tags:tags});
+                if (!productCount.includes(Number(page))) {
+                    res.redirect('/products?page=' + productCount[productCount.length -1] + "&show=" + show);
+                } else {
+                    res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show});
+                }
             });
 
         });
