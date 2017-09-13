@@ -43,8 +43,12 @@ module.exports = function (app, passport) {
                 if (err) return console.error(err);
                 if (count <= 12) productCount.push(1);
                 else {
+                    var myDP = count%12;
                     for (var i = 1; i <= count / 12; i++) {
                         productCount.push(i)
+                    }
+                    if(myDP !== 0){
+                        productCount.push(productCount[productCount.length-1]+1);
                     }
                 }
                 res.render('products', {products: products, count: productCount, currPage: page});

@@ -70,7 +70,7 @@ background: url(../images/grid_view.png)no-repeat;
 }
 .cbp-vm-add {
 	color: #fff;
-	background:#816263;
+	background:#dd4b39;
 	padding: 8px 10px;
 	border-radius: 2px;
 	margin: 20px 0 0;
@@ -300,3 +300,6 @@ width: 46%;
 	}
 }
 
+.cbp-vm-selected{
+
+}

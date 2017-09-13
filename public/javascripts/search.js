@@ -43,4 +43,8 @@ $(function () {
         }
     });
 
+    $('.cbp-vm-options').click(function () {
+        $('#myList, #myGrid').toggleClass('cbp-vm-selected');
+    });
+
 });

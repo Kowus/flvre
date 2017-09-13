@@ -45,7 +45,7 @@
         <div class="new-product">
             <div class="new-product-top">
                 <ul class="product-top-list">
-                    <li><a href="index.html">Home</a>&nbsp;<span>&gt;</span></li>
+                    <li><a href="/">Home</a>&nbsp;<span>&gt;</span></li>
                     <li><span class="act">Products</span>&nbsp;</li>
                 </ul>
                 <p class="back"><a href="../">Back to Previous</a></p>
@@ -57,15 +57,15 @@
                     <div class="sort">
                         <div class="sort-by">
                             <label>Sort By</label>
-                            <select>
-                                <option value="">
-                                    Position
+                            <select name="sort">
+                                <option value="date">
+                                    Date Added
+                                </option>
+                                <option value="price">
+                                    Price
                                 </option>
                                 <option value="">
                                     Name
-                                </option>
-                                <option value="">
-                                    Price
                                 </option>
                             </select>
                             <a href=""><img src="/images/arrow2.gif" alt="" class="v-middle"></a>
@@ -74,7 +74,7 @@
                     <ul class="women_pagenation">
                         <li>Page:</li>
                         {{#each count as |ct ctIndex|}}
-                            <li class="{{#compare ct currPage operator="=="}}active{{/compare}}"><a href="/req">{{ct}}</a></li>
+                            <li class="{{#compare ct ../currPage operator="=="}}active disabled{{/compare}}"><a href="/products/?page={{ct}}">{{ct}}</a></li>
                         {{/each}}
 
                     </ul>
@@ -82,8 +82,8 @@
                 </div>
             <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                 <div class="cbp-vm-options">
-                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
-                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
+                    <a href="#" id="myGrid" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid" title="grid">Grid View</a>
+                    <a href="#" id="myList" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list" title="list">List View</a>
                 </div>
                 <div class="pages">
                     <div class="limiter visible-desktop">
@@ -118,18 +118,18 @@
                                                 <div class="cart-left">
                                                     <p class="title text-uppercase" style="letter-spacing: 1px;">{{product.name}}</p>
                                                 </div>
-                                                <div class="pricey"><span class="item_price">${{product.price}}</span></div>
+                                                <div class="pricey badge badge-lg"><span class="item_price">${{product.price}}</span></div>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </a>
                         <div class="cbp-vm-details">
                             Silver beet shallot wakame tomatillo salsify mung bean beetroot groundnut.
                         </div>
                         <a class="cbp-vm-icon cbp-vm-add item_add" href="#">Add to cart</a>
-                </div>
                     </li>
                 {{/each}}
 
