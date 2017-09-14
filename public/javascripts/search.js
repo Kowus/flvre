@@ -9,7 +9,7 @@ $(function () {
     $("#page"+pg).click(function () {return false;});
     $("#search-bar").autocomplete({
         classes: {
-            "ui-autocomplete": "highlight"
+            "ui-autocomplete": "highlight text-capitalize"
         },
         source: function (request, response) {
             $.ajax({
