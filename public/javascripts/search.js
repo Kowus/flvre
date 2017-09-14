@@ -57,9 +57,9 @@ $(function () {
         var page = $.urlParam("page") || 1;
         var show = $.urlParam("show") || 12;
         var newShow = Number($("#limit option:selected").text().trim());
-        if (newShow != show) {
+        // if (newShow != show) {
             window.location.replace(window.location.pathname + "?page=" + page + "&show=" + newShow);
-        }
+        // }
     });
 
 
