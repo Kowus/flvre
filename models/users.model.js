@@ -5,7 +5,7 @@ var userSchema = new mongoose.Schema({
     auth: {
         local: {
             email: String,
-            password: String,
+            password: Buffer,
             firstname: String,
             lastname: String,
             profile_photo: String
@@ -74,10 +74,11 @@ userSchema.pre('save', function (next) {
 
 
 userSchema.methods.validPassword = function (password) {
-    pwd.verify(Buffer.from(password), Buffer.from(this.auth.local.password), function (err, result) {
-        console.log("result" + result);
-        return result === securePassword.VALID || result === securePassword.VALID_NEEDS_REHASH;
-    });
+    /*pwd.verify(Buffer.from(password), Buffer.from(this.auth.local.password), function (err, result) {
+        console.log("result:\t" + result+"enum:\t"+securePassword.VALID);
+        return (result === securePassword.VALID || result === securePassword.VALID_NEEDS_REHASH);
+    });*/
+    return pwd.verifySync(Buffer.from(password), this.auth.local.password);
 };
 
 
