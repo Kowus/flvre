@@ -53,7 +53,7 @@ $(function () {
     $('.cbp-vm-options').click(function () {
         $('#myList, #myGrid').toggleClass('cbp-vm-selected');
     });
-    $("#limit").click(function () {
+    $("#limit").change(function () {
         var page = $.urlParam("page") || 1;
         var show = $.urlParam("show") || 12;
         var newShow = Number($("#limit option:selected").text().trim());
