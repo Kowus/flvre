@@ -1048,10 +1048,6 @@ p.title {
 	font-size: 0.95em;
 	font-weight: bold;
 }
-.cart-left {
-	float: left;
-	margin-right: 2.6%;
-}
 p.title {
 	color: #000;
 	font-size: 0.95em;
@@ -1082,9 +1078,6 @@ p.title {
 }
 .product_image {
     position: relative;
-}
-.product_container {
-	padding: 1em;
 }
 .products-page {
 	padding: 4em 0;
@@ -1364,10 +1357,6 @@ p.title {
 	color: #000;
 	font-size: 0.95em;
 	font-weight: bold;
-}
-.cart-left {
-	float: left;
-	margin-right: 2.6%;
 }
 p.title {
 	color: #000;
