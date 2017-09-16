@@ -108,39 +108,30 @@
                 <!-- Main component for a primary marketing message or call to action -->
                 <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
                     <li class="test-class active"><a class="deco-none misc-class" href="#how-to"> More Information</a></li>
-                    <li class="test-class"><a href="#features">Specifications</a></li>
                     <li class="test-class"><a class="deco-none" href="#source">Reviews (7)</a></li>
                 </ul>
 
                 <div class="tab-content responsive hidden-xs hidden-sm">
                     <div class="tab-pane active" id="how-to">
                         <p class="tab-text">{{product.description}} </p>
-                    </div>
-                    <div class="tab-pane" id="features">
                         <p class="tab-text">
-                            <strong>Material</strong>: Cotton
-
-                        </p>
-                    <p class="tab-text">
-                    <table class="table table-responsive table-bordered table-condensed">
-                        <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                        </tr>
-                        </thead>
-                    <tbody>
-                        {{#each product.specifications.sizes as |size sizeIndex|}}
+                        <table class="table table-responsive table-bordered table-condensed">
+                            <thead>
                             <tr>
-                                <td>{{#each size.class as |class|}} | {{class}}{{/each}}</td>
-                                <td class="text-right">{{size.qty}}</td>
+                                <th>Size</th>
+                                <th>Quantity</th>
                             </tr>
+                            </thead>
+                            <tbody>
+                            {{#each product.specifications.sizes as |size sizeIndex|}}
+                                <tr>
+                                    <td>{{#each size.class as |class|}} | {{class}}{{/each}}</td>
+                                    <td class="text-right">{{size.qty}}</td>
+                                </tr>
 
-                        {{/each}}
-                        </tbody>
-                        </table>
-
-
+                            {{/each}}
+                            </tbody>
+                    </table>
                         </p>
                     </div>
                     <div class="tab-pane" id="source">
