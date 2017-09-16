@@ -3,9 +3,11 @@ $(function () {
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (!results) return null;
         else return results[1];
-
     };
     var pg = $.urlParam("page") || 1;
+    var page = $.urlParam("page") || 1;
+    var show = $.urlParam("show") || 12;
+    var newShow = Number($("#limit option:selected").text().trim());
     $("#page"+pg).click(function () {return false;});
     $("#search-bar").autocomplete({
         classes: {
@@ -55,12 +57,12 @@ $(function () {
     });
     $("#limit").click(function () {
         var page = $.urlParam("page") || 1;
-        var show = $.urlParam("show") || 12;
-        var newShow = Number($("#limit option:selected").text().trim());
-        if (newShow != show) {
-            window.location =window.location.pathname + "?page=" + page + "&show=" + newShow;
-        }
-    });
+        // var show = $.urlParam("show") || 12;
+        newShow = Number($("#limit option:selected").text().trim());
 
+    });
+    setInterval(function(){ if (newShow != show) {
+        window.location =window.location.pathname + "?page=" + page + "&show=" + newShow;
+    } }, 200);
 
 });
