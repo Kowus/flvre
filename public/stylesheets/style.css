@@ -648,20 +648,19 @@ a.like_name {
 }
 /*** Navigation ***/
 .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+    font-size: 2em;
 	width: 45px;
 	height: 45px;
-	position: absolute;
+    position: absolute;
 	cursor: pointer;
 	z-index: 100;
-	margin-top:-2em;
+    bottom: calc(60% - 20px);
 }
 .nbs-flexisel-nav-left {
-	left: 0px;
-	background: url(../images/arrows.png) no-repeat -8px -7px;
+	left: 3px;
 }
 .nbs-flexisel-nav-right {
-	right: 0px;
-	background: url(../images/arrows.png) no-repeat -61px -7px;
+	right: -20px;
 }
 .other-products {
     padding: 60px 0;
@@ -2464,6 +2463,10 @@ p.right {
 	.media-left.response-text-left {
 		width: 16%;
 	}
+    .imagezoom-view{
+        display: none;
+    }
+    .container{overflow-x: hidden;}
 }
 @media screen and (max-width: 768px) {	
 	.banner-info {

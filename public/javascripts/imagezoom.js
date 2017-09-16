@@ -8,14 +8,14 @@
 (function($){
   var defaults = {
     cursorcolor:'255,255,255',
-    opacity:0.5,
+    opacity:0.3,
     cursor:'crosshair',
     zindex:2147483647,
-    zoomviewsize:[480,395],
+    zoomviewsize:[420,394],
     zoomviewposition:'right',
     zoomviewmargin:10,
     zoomviewborder:'none',
-    magnification:1.925
+    magnification:1.5
   };
 
   var imagezoomCursor,imagezoomView,settings,imageWidth,imageHeight,offset;
