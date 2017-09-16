@@ -648,7 +648,7 @@ a.like_name {
 }
 /*** Navigation ***/
 .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
-    font-size: 2em;
+    font-size: 3em;
 	width: 45px;
 	height: 45px;
     position: absolute;
@@ -660,7 +660,7 @@ a.like_name {
 	left: 3px;
 }
 .nbs-flexisel-nav-right {
-	right: -20px;
+	right: -12px;
 }
 .other-products {
     padding: 60px 0;

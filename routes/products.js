@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
             if (!productCount.includes(Number(page))) {
                 res.redirect('/products?page=' + productCount[productCount.length -1] + "&show=" + show);
             } else {
-                res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show});
+                res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show, title:"Shop All Products"});
             }
         });
 
