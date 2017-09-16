@@ -49,7 +49,13 @@ router.get('/id/:id', function (req, res, next) {
         if (err) {
             return res.send("Error Occured.")
         }
-        res.render('single', {product: product});
+        Products.find({tags:{$in:product.tags},_id:{$ne:product._id}}, function (err, related) {
+        if(err){
+            console.error(err);
+        }
+            res.render('single', {product: product, related: related});
+        });
+
     });
 });
 
@@ -68,7 +74,7 @@ router.get('/tags/:tag', function (req, res, next) {
             return res.send("Error Occured." + err)
         }
         var count = products.length;
-        // Products.count({tags}, function (err, count) {
+        Products.count({tags:req.params.tag}, function (err, count) {
             if (err) return console.error(err);
             if (count <= show) productCount.push(1);
             else {
@@ -92,7 +98,7 @@ router.get('/tags/:tag', function (req, res, next) {
             } else {
                 res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show});
             }
-        // });
+        });
 
     });
 });
