@@ -4,13 +4,12 @@
             <div class="banner-bottom-left">
                 <h2 class="text-uppercase">f<br>l<br>v<br>r<br>e.</h2>
             </div>
-
-
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="shop">
         <a href="/products">SHOP THE COLLECTION NOW</a>
+
     </div>
 </div>
 </div>
@@ -19,6 +18,7 @@
     <div class="main-content">
         <div class="products-grid text-center">
             <header>
+                {{>search_bar}}
                 <h3 class="head text-center">Latest Products</h3>
             </header>
             {{#each products as | product productIndex |}}
