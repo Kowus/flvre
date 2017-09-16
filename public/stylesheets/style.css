@@ -1043,17 +1043,6 @@ h3.new-models {
 	font-size: 0.85em;
 	font-weight: bold;
 }
-p.title {
-	color: #000;
-	font-size: 0.95em;
-	font-weight: bold;
-}
-p.title {
-	color: #000;
-	font-size: 0.95em;
-	font-weight: 700;
-	margin:0;
-}
 .pricey {
 	font-weight: bold;
 	font-size: 0.95em;
@@ -1352,11 +1341,6 @@ h3.new-models {
 	overflow: hidden;
 	top: 12em;
 	left: 6.2em;
-}
-p.title {
-	color: #000;
-	font-size: 0.95em;
-	font-weight: bold;
 }
 p.title {
 	color: #000;
@@ -2512,6 +2496,8 @@ p.right {
 		margin: 0 0 15px 0;
 		font-size: 22px;
 	}
+    .view .mask, .view .content{display: none; padding:0;}
+    .info{display: none}
 }
 @media screen and (max-width: 640px) {	
 	.navbar-header {
@@ -2640,8 +2626,7 @@ p.right {
 		width: 37.5%;
 	}
 	.view .mask, .view .content {
-		top: 8em;
-		left: 4.2em;
+		display: none;
 	}
 	.cart-item-info h3 a {
 		font-size: 15px;
@@ -2811,6 +2796,7 @@ p.right {
 		width: 20%;
 		margin-right: 2%;
 	}
+    .view .mask, .view .content{display: none}
 }
 @media screen and (max-width: 320px) {
     .latest-bis{
