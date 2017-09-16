@@ -53,7 +53,7 @@ router.get('/id/:id', function (req, res, next) {
         if(err){
             console.error(err);
         }
-            res.render('single', {product: product, related: related});
+            res.render('single', {product: product, related: related, title:"Shop "+product.name});
         });
 
     });
@@ -96,7 +96,7 @@ router.get('/tags/:tag', function (req, res, next) {
             if (!productCount.includes(Number(page))) {
                 res.redirect('/products?page=' + productCount[productCount.length -1] + "&show=" + show);
             } else {
-                res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show});
+                res.render('products', {products: products, count: productCount, currPage: page, tags: tags, limit: show, title: "Shop all " + req.param("tag")});
             }
         });
 
