@@ -21,7 +21,8 @@ $(function () {
                     response($.map(data, function (el) {
                         return {
                             label: el.name,
-                            value: el._id
+                            value: el._id,
+                            tags: el.tags
                         };
                     }));
                 }

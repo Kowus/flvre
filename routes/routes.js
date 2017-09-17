@@ -29,10 +29,15 @@ module.exports = function (app, passport) {
     app.use('/products', require('./products'));
 
 
-
     app.get('/search_member', function (req, res) {
         var regex = new RegExp(req.query["term"], 'i');
-        var query = Products.find({name: regex}).sort({"dateAdded": -1});
+        var query = Products.find(
+            {
+                $or: [
+                    {name: regex},
+                    {tags: regex}
+                ]
+            }).sort({"dateAdded": -1});
 
         query.exec(function (err, users) {
             if (!err) {
