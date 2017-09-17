@@ -34,7 +34,7 @@ module.exports = function (passport) {
                         var newUser = new User();
 
                         //	set User's local credentials
-                        newUser.auth.local.email = email;
+                        newUser.auth.local.email = email.toLowerCase();
                         newUser.auth.local.password = req.body.password;
                         newUser.auth.local.firstname = req.body.firstname;
                         newUser.auth.local.lastname = req.body.lastname;
@@ -58,7 +58,7 @@ module.exports = function (passport) {
         },
         function (req, email, password, done) {
             //	If user exists
-            User.findOne({'auth.local.email': email}, function (err, user) {
+            User.findOne({'auth.local.email': email.toLowerCase()}, function (err, user) {
                 if (err) return done(err);
                 //	If user doesn't exist
                 if (!user) return done(null, false, req.flash('loginMessage', 'No user found'));
