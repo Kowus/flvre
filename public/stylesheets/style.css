@@ -2275,6 +2275,10 @@ p.right {
 	.dreamcrub {
 		margin: 0px 0 50px 0;
 	}
+    .imagezoom-view, .imagezoom-cursor{
+        display: none;
+    }
+    .container{overflow-x: hidden;}
 }
 @media screen and (max-width: 800px) {	
 	.logo a span {
@@ -2463,10 +2467,6 @@ p.right {
 	.media-left.response-text-left {
 		width: 16%;
 	}
-    .imagezoom-view, .imagezoom-cursor{
-        display: none;
-    }
-    .container{overflow-x: hidden;}
 }
 @media screen and (max-width: 768px) {	
 	.banner-info {
