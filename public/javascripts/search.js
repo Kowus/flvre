@@ -57,8 +57,8 @@ $(function () {
     $("#limit").change(function () {
         var page = $.urlParam("page") || 1;
         var show = $.urlParam("show") || 12;
-        var sort = $.urlParam("sort") || "dateAdded:-1";
-        var newShow = Number($("#limit option:selected").text().trim());
+        var sort = $.urlParam("sort") || $("#sort option:selected").val() || "dateAdded_-1";
+        var newShow = Number($("#limit option:selected").val().trim());
         if (newShow != show) {
             window.location =window.location.pathname + "?page=" + page + "&show=" + newShow+"&sort="+sort;
         }
