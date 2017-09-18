@@ -2463,7 +2463,7 @@ p.right {
 	.media-left.response-text-left {
 		width: 16%;
 	}
-    .imagezoom-view{
+    .imagezoom-view, .imagezoom-cursor{
         display: none;
     }
     .container{overflow-x: hidden;}
