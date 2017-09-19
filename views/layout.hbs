@@ -82,6 +82,7 @@ End Preloader
         </div>
     </div>
 </div>
+{{#unless admin}}
 <!-- header-section-ends -->
 <div class="banner-top">
     <div class="container">
@@ -124,11 +125,11 @@ End Preloader
         <!--/.navbar-->
     </div>
 </div>
-
+{{/unless}}
 
 {{{body}}}
 
-
+{{#unless admin}}
 <!-- content-section-ends-here -->
 <div class="news-letter">
     <div class="container text-center">
@@ -145,8 +146,10 @@ End Preloader
         </div>
     </div>
 </div>
+{{/unless}}
 <div class="footer">
     <div class="container">
+        {{#unless admin}}
         <div class="footer_top">
             <div class="span_of_4">
                 <div class="col-md-3 span1_of_4">
@@ -164,7 +167,6 @@ End Preloader
                     <ul class="f_nav">
                         <li><a href="#">frequently asked questions</a></li>
                         <li><a href="#">Report a problem</a></li>
-
                     </ul>
                 </div>
                 <div class="col-md-3 span1_of_4">
@@ -195,8 +197,9 @@ End Preloader
             <br>
             <p style="width: 60%; margin: 0 auto;"><small class="text-muted">This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies. <a style="color: black">Find out more.</a></small></p>
         </div>
+        {{/unless}}
         <div class="copyright text-center" style="letter-spacing: 2px;">
-            <p style="letter-spacing: 2px;">© {{year}} FLVRE. All Rights Reserved | Design by   <a href="http://kowus.xyz" target="_blank">  Barnabas Nomo</a></p>
+            <p style="letter-spacing: 2px;">© {{year}} FLVRE. All Rights Reserved</p>
         </div>
     </div>
 </div>

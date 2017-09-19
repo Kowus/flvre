@@ -70,5 +70,40 @@ module.exports = function (passport) {
         }
     ));
 
+    passport.use('admin-signup', new LocalStrategy({
+            // by default, local strategy uses username and password, we will override with email
+            usernameField: 'email',
+            passwordField: 'password',
+            passReqToCallback: true // allows us to pass back the entire request to the callback
+        },
+        function (req, email, password, done) {
+            // async. User.findOne() won't fire until data is sent back
+            process.nextTick(function () {
+                //	Check to see if there's already a record of user
+                User.findOne({'auth.local.email': email}, function (err, user) {
+                    if (err) return done(err);
+                    if (user) {
+                        return done(null, false, req.flash('signupMessage', 'That email has already been used with an account.'))
+                    } else {
+                        //	User doesn't already exist
+                        //	Create User
+                        var newUser = new User();
 
+                        //	set User's local credentials
+                        newUser.auth.local.email = email.toLowerCase();
+                        newUser.auth.local.password = req.body.password;
+                        newUser.auth.local.firstname = req.body.firstname;
+                        newUser.auth.local.lastname = req.body.lastname;
+                        newUser.group = 'admin';
+                        console.log(newUser.auth.local);
+                        //	save the user
+                        newUser.save(function (err) {
+                            if (err) throw err;
+                            return done(null, newUser);
+                        });
+                    }
+                });
+            });
+        }
+    ));
 };
