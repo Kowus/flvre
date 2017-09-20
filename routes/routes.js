@@ -16,9 +16,9 @@ module.exports = function (app, passport) {
             });
         });
     });
-    app.get('/!admin', isNotLoggedIn, function (req, res, next) {
-        res.render('admin-login', {title: 'FLVRE: Login', message: req.flash('loginMessage'), admin:true});
-    });
+    app.post("/sul", function (req, res) {
+        res.json(req.body)
+    })
     app.get('/login', isNotLoggedIn, function (req, res, next) {
         res.render('login', {title: 'FLVRE: Login', message: req.flash('loginMessage')});
     });
@@ -29,6 +29,7 @@ module.exports = function (app, passport) {
         res.json(req.user);
     });
     app.use('/products', require('./products'));
+    app.use('/!admin', require('./admin'));
 
 
     app.get('/search_member', function (req, res) {

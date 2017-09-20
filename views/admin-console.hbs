@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="main-content">
+        <div class="jumbotron text-center jmb">
+            <div class="btn-group btn-group-vertical">
+                <div class="btn option-button" data-toggle="modal"
+                     data-target="#addModal">
+                    <h3>Add New Product</h3>
+                </div>
+                <div class="btn option-button">
+                    <h3>Check Inventory</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="addModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Add A New Product</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-group form-group-sm" id="addItemForm" method="post" action="/sul">
+                    <fieldset class="form-group">
+                        <input class="form-control" type="text" placeholder="Name" name="name" id="name" required>
+                    </fieldset>
+                    <fieldset>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon2">&#x20B5;</span>
+                            <input class="form-group form-control" type="number" step=".01" placeholder="price" name="price" id="price" required aria-describedby="basic-addon2">
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <textarea placeholder="Short Description" class="form-control" name="shortdes" maxlength="150" rows="3"></textarea>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                <button class="btn btn-success disabled" id="submitItem">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -2115,6 +2115,19 @@ p.right {
 .social-icons  ul li a.googleplus1 {
 	background-position: -36px 0px;
 }
+.option-button{
+    background-color: #3C3038;
+    border: 3px solid white;
+}
+.option-button h3{
+    color: white;
+}
+.jmb{background-color: white}
+.form-control[rows="3"]{
+    height:50px;
+    resize: none;
+}
+
 /*-- //single-page --*/
 
 /*-- responsine-design --*/
@@ -3056,12 +3069,6 @@ p.right {
 }
 label{
     color: red;
-}
-input[required]::before{
-    content: "* ";
-}
-.required::before{
-    content: "* ";
 }
 .badge-lg{
     /*background-color: rgba(150,0,0,.4);*/

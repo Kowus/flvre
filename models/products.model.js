@@ -20,7 +20,6 @@ var productShema = mongoose.Schema({
     description: String,
     shortdes:String,
     specifications: {
-        materials:Array,
         sizes: [{
             class: Array,
             qty: Number

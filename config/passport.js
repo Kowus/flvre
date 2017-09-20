@@ -38,7 +38,6 @@ module.exports = function (passport) {
                         newUser.auth.local.password = req.body.password;
                         newUser.auth.local.firstname = req.body.firstname;
                         newUser.auth.local.lastname = req.body.lastname;
-                        console.log(newUser.auth.local);
                         //	save the user
                         newUser.save(function (err) {
                             if (err) throw err;
@@ -65,6 +64,7 @@ module.exports = function (passport) {
 
                 //	If user found but password is wrong
                 if (!user.validPassword(password)) return done(null, false, req.flash('loginMessage', 'Email or Password incorrect'));
+
                 return done(null, user);
             });
         }
@@ -80,7 +80,7 @@ module.exports = function (passport) {
             // async. User.findOne() won't fire until data is sent back
             process.nextTick(function () {
                 //	Check to see if there's already a record of user
-                User.findOne({'auth.local.email': email}, function (err, user) {
+                User.findOne({'auth.local.email': email.toLowerCase()}, function (err, user) {
                     if (err) return done(err);
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email has already been used with an account.'))
@@ -95,7 +95,6 @@ module.exports = function (passport) {
                         newUser.auth.local.firstname = req.body.firstname;
                         newUser.auth.local.lastname = req.body.lastname;
                         newUser.group = 'admin';
-                        console.log(newUser.auth.local);
                         //	save the user
                         newUser.save(function (err) {
                             if (err) throw err;

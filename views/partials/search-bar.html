@@ -1,6 +1,13 @@
 <div class="col-lg-10 in-gp-tb col-lg-offset-1" style="margin-top: 10px;">
     <div class="input-group">
-        <input type="text" id="search-bar" class="form-control" placeholder="Search" autofocus>
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by<span class="caret"></span></button>
+            <ul class="dropdown-menu text-capitalize">
+                <li><a href="#">Name</a></li>
+                <li><a href="#">Tags</a></li>
+            </ul>
+        </div><!-- /btn-group -->
+        <input id="search-bar" class="form-control" placeholder="Search" autofocus>
         <span class="input-group-btn">
         <button class="btn btn-default" type="button">Go!</button>
       </span>

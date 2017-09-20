@@ -68,7 +68,9 @@ $(function () {
         var newShow = Number($("#limit option:selected").text().trim());
         var sort = $("#sort option:selected").val();
         window.location =window.location.pathname + "?page=" + page + "&show=" + newShow+"&sort="+sort;
+    });
+
+    $("#submitItem").click(function () {
+        $("#addItemForm").submit();
     })
-
-
 });
