@@ -72,5 +72,10 @@ $(function () {
 
     $("#submitItem").click(function () {
         $("#addItemForm").submit();
-    })
+    });
+
+    $('a.back').click(function(){
+        parent.history.back();
+        return false;
+    });
 });
