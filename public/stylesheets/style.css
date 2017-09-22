@@ -2123,11 +2123,18 @@ p.right {
     color: white;
 }
 .jmb{background-color: white}
-.form-control[rows="3"]{
-    height:50px;
+textarea{
     resize: none;
 }
-
+.form-control[rows="3"]{
+    height:50px;
+}
+.form-control[rows="10"]{
+    height:100px;
+}
+.modal-body{
+    overflow-y: scroll;
+}
 /*-- //single-page --*/
 
 /*-- responsine-design --*/
