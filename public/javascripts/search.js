@@ -6,7 +6,9 @@ $(function () {
 
     };
     var pg = $.urlParam("page") || 1;
-    $("#page"+pg).click(function () {return false;});
+    $("#page" + pg).click(function () {
+        return false;
+    });
     $("#search-bar").autocomplete({
         classes: {
             "ui-autocomplete": "highlight text-capitalize"
@@ -60,22 +62,32 @@ $(function () {
         var sort = $.urlParam("sort") || $("#sort option:selected").val() || "dateAdded_-1";
         var newShow = Number($("#limit option:selected").val().trim());
         if (newShow != show) {
-            window.location =window.location.pathname + "?page=" + page + "&show=" + newShow+"&sort="+sort;
+            window.location = window.location.pathname + "?page=" + page + "&show=" + newShow + "&sort=" + sort;
         }
     });
     $("#sort").change(function () {
         var page = $.urlParam("page") || 1;
         var newShow = Number($("#limit option:selected").text().trim());
         var sort = $("#sort option:selected").val();
-        window.location =window.location.pathname + "?page=" + page + "&show=" + newShow+"&sort="+sort;
+        window.location = window.location.pathname + "?page=" + page + "&show=" + newShow + "&sort=" + sort;
     });
 
     $("#submitItem").click(function () {
         $("#addItemForm").submit();
     });
 
-    $('a.back').click(function(){
+    $('a.back').click(function () {
         parent.history.back();
         return false;
+    });
+    $("#newSizeClass").click(function () {
+        $(".size-zone").append("<div class='input-group'>" +
+            "<div class='input-group-btn'>\n" +
+            "<select class='btn btn-default' required>\n" +
+            "<option>small</option>\n" +
+            "<option>medium</option>" +
+            "</select></div>" +
+            "<input class='form-control' type='number' step='1' required name='size_qty' placeholder='Quantity'>"
+            + "</div>")
     });
 });

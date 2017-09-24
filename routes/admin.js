@@ -4,7 +4,7 @@ var passport = require('passport');
 
 /* /!admin */
 
-router.get('/login', function (req, res, next) {
+router.get('/login', isNotLoggedIn,function (req, res, next) {
     res.render('admin-login', {title:"Admin Login", admin:true});
 });
 

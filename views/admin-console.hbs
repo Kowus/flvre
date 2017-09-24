@@ -9,6 +9,13 @@
                 <div class="btn option-button">
                     <h3>Check Inventory</h3>
                 </div>
+                <div class="input-group">
+
+                    <input id="search-bar" class="form-control" placeholder="Search" autofocus>
+                    <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+                </div>
             </div>
         </div>
     </div>
@@ -47,6 +54,18 @@
                             <span class="input-group-addon"><i class="fa fa-3x fa-pencil-square-o"></i></span>
                             <textarea placeholder="Long Description" class="form-control" name="shortdes" rows="10"></textarea>
                         </div>
+                    </fieldset>
+                    <fieldset>
+                        <label class="text-center"><h5 class="text-center">Featured</h5></label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Yes <br><input type="radio" class="btn btn-default" name="featured" value="true"></span>
+                            <span class="input-group-addon">No <br><input type="radio" class="btn btn-default" name="featured" value="false" checked></span>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <label><h4>Sizes</h4></label>
+                        <p class="btn btn-primary pull-right" id="newSizeClass">New</p>
+                        <div class="size-zone"></div>
                     </fieldset>
                 </form>
             </div>
