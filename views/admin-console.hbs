@@ -9,13 +9,6 @@
                 <div class="btn option-button">
                     <h3>Check Inventory</h3>
                 </div>
-                <div class="input-group">
-
-                    <input id="search-bar" class="form-control" placeholder="Search" autofocus>
-                    <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-                </div>
             </div>
         </div>
     </div>
@@ -45,14 +38,14 @@
                     <fieldset class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-2x fa-pencil-square"></i></span>
-                            <textarea placeholder="Short Description" class="form-control" name="shortdes" maxlength="150" rows="3"></textarea>
+                            <textarea placeholder="Short Description" class="form-control" name="shortdes" maxlength="150" rows="3" required></textarea>
                         </div>
 
                     </fieldset>
                     <fieldset>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-3x fa-pencil-square-o"></i></span>
-                            <textarea placeholder="Long Description" class="form-control" name="shortdes" rows="10"></textarea>
+                            <textarea placeholder="Long Description" class="form-control" name="shortdes" rows="10" required></textarea>
                         </div>
                     </fieldset>
                     <fieldset>
@@ -71,7 +64,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
-                <button class="btn btn-success disabled" id="submitItem">Submit</button>
+                <button class="btn btn-success" id="submitItem">Submit</button>
             </div>
         </div>
 

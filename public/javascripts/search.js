@@ -83,11 +83,13 @@ $(function () {
     $("#newSizeClass").click(function () {
         $(".size-zone").append("<div class='input-group'>" +
             "<div class='input-group-btn'>\n" +
-            "<select class='btn btn-default' required>\n" +
-            "<option>small</option>\n" +
-            "<option>medium</option>" +
+            "<select class='btn btn-default btn-sm' required name='size_class' id='size_class'>\n" +
+            "<option>Size</option>\n" +
+            "<option>Small</option>\n" +
+            "<option>Medium</option>\n" +
+            "<option>Large</option>" +
             "</select></div>" +
-            "<input class='form-control' type='number' step='1' required name='size_qty' placeholder='Quantity'>"
+            "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'>"
             + "</div>")
     });
 });

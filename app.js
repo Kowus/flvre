@@ -50,8 +50,15 @@ hbs.registerHelper('compare', function(lvalue, rvalue, options) {
 hbs.registerPartials('./views/partials');
 
 app.locals.year=new Date().getFullYear();
-
-
+mongoose.connection.on('connected', function () {
+    console.log('Mongoose default connection connected')
+});
+mongoose.connection.on('error', function (err) {
+   console.log('Mongoose default connection error:'+err)
+});
+mongoose.connection.on('disconnected', function () {
+    console.log('Mongoose default connection disconnected')
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -87,6 +94,15 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+
+
+process.on('SIGINT', function () {
+    mongoose.connection.close(function () {
+       console.log("Mongoose default connection disconnected on app termination");
+        process.exit(0);
+    });
 });
 
 module.exports = app;
