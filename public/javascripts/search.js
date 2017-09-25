@@ -120,21 +120,24 @@ $(function () {
         // alert("Upload!");
         var file_data = $("#image_box").prop("files")[0];
         var form_data = new FormData();
-        form_data.append("file", file_data);
+        form_data.append("images", file_data);
         $.ajax({
             url: "/!admin/upload/image",
-            dataType: 'json',
-            cache: false,
-            contentType: false,
-            processData: false,
             data: form_data,
-            type: 'post',
-            success:function (data) {
-                console.log(data);
-                alert(data);
+            cache: false,
+            processData: false,
+            contentType:false,
+            type: 'POST',
+            success:function (data, status, req) {
+                console.log("{data: "+data+", status: "+status+", req: "+req+"}");
+            },
+            error:function (req, status, error) {
+                alert("{error: "+error+", status: "+status+", req: "+req+"}");
             }
         });
     });
 
 
 });
+
+// contentType:'multipart/form-data',
