@@ -90,7 +90,7 @@ $(function () {
             "<option>Medium</option>\n" +
             "<option>Large</option>" +
             "</select></div>" +
-            "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'><span class='input-group-btn' id='trash_it'><button class='btn btn-danger btn-sm' type='button' onclick='$(this).parents()[1].remove()'><i class='fa fa-trash-o'></i>delete</button></span>"
+            "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'><span class='input-group-btn' id='trash_it'><button class='btn btn-danger btn-sm' type='button' onclick='$(this).parents()[1].remove()'><i class='fa fa-trash-o'></i></button></span>"
             + "</div>");
     });
 
