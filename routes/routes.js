@@ -16,9 +16,7 @@ module.exports = function (app, passport) {
             });
         });
     });
-    app.post("/sul", needsGroup('admin'),function (req, res) {
-        res.json(req.body)
-    })
+
     app.get('/login', isNotLoggedIn, function (req, res, next) {
         res.render('login', {title: 'FLVRE: Login', message: req.flash('loginMessage')});
     });

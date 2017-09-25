@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var Product = require('../models/products.model');
 
 /* /!admin */
-
 router.get('/login', isNotLoggedIn,function (req, res, next) {
     res.render('admin-login', {title:"Admin Login", admin:true});
 });
@@ -12,12 +12,20 @@ router.get('/profile', needsGroup("admin"), function (req, res, next) {
     res.render('admin-console', {title:"Admin Login", admin:true});
 });
 
+
 router.post('/login', passport.authenticate('local-login', {
     successRedirect: '/!admin/profile',
     failureRedirect: '/!admin/login',
     failureFlash: true
 }));
 
+router.post('/add_item', needsGroup('admin'),function (req, res, next) {
+    var newProduct = new Product(req.body);
+    newProduct.save(function (err, result) {
+        if (err) throw err;
+        console.log(result);
+    });
+});
 
 module.exports = router;
 
@@ -29,7 +37,7 @@ function needsGroup(group) {
         else
             res.send(401, 'Unauthorized');
     };
-};
+}
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
