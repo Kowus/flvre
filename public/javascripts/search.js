@@ -81,7 +81,8 @@ $(function () {
         return false;
     });
     $("#newSizeClass").click(function () {
-        $(".size-zone").append("<div class='input-group'>" +
+        var currCount = $("div #size_group");
+        $(".size-zone").append("<div class='input-group' id='size_group'>" +
             "<div class='input-group-btn'>\n" +
             "<select class='btn btn-default btn-sm' required name='size_class' id='size_class'>\n" +
             "<option>Size</option>\n" +
@@ -89,7 +90,10 @@ $(function () {
             "<option>Medium</option>\n" +
             "<option>Large</option>" +
             "</select></div>" +
-            "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'>"
-            + "</div>")
+            "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'><span class='input-group-btn' id='trash_it'><button class='btn btn-danger btn-sm' type='button' onclick='$(this).parents()[1].remove()'><i class='fa fa-trash-o'></i>delete</button></span>"
+            + "</div>");
     });
+
+
 });
+// $("div #size_group")[$("div #size_group").index(0)].remove();
