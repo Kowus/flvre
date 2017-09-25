@@ -9,6 +9,9 @@ $(function () {
     $("#page" + pg).click(function () {
         return false;
     });
+    $("#img_display").click(function () {
+        return false
+    });
     $("#search-bar").autocomplete({
         classes: {
             "ui-autocomplete": "highlight text-capitalize"
@@ -129,10 +132,12 @@ $(function () {
             contentType:false,
             type: 'POST',
             success:function (data, status, req) {
-                console.log("{data: "+data+", status: "+status+", req: "+req+"}");
+                alert("Success!");
+                $("#img_display").attr("src", data.url);
             },
             error:function (req, status, error) {
-                alert("{error: "+error+", status: "+status+", req: "+req+"}");
+                alert("error uploading image");
+                // $("#img_display").attr("src")
             }
         });
     });
