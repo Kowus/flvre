@@ -4,12 +4,12 @@ var passport = require('passport');
 var Product = require('../models/products.model');
 
 /* /!admin */
-router.get('/login', isNotLoggedIn,function (req, res, next) {
-    res.render('admin-login', {title:"Admin Login", admin:true});
+router.get('/login', isNotLoggedIn, function (req, res, next) {
+    res.render('admin-login', {title: "Admin Login", admin: true});
 });
 
 router.get('/profile', needsGroup("admin"), function (req, res, next) {
-    res.render('admin-console', {title:"Admin Login", admin:true});
+    res.render('admin-console', {title: "Admin Login", admin: true});
 });
 
 
@@ -19,11 +19,21 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true
 }));
 
-router.post('/add_item', needsGroup('admin'),function (req, res, next) {
-    var newProduct = new Product(req.body);
+router.post('/add_item', needsGroup('admin'), function (req, res, next) {
+    var newProduct = new Product({
+        name:req.body.name,
+        price:req.body.price,
+        shortdes:req.body.shortdes,
+        description:req.body.description,
+        featured:req.body.featured,
+        specifications:{
+            sizes:req.body.sizes
+        }
+    });
     newProduct.save(function (err, result) {
-        if (err) throw err;
+        if (err) return res.json({status: 501, result: err});
         console.log(result);
+        res.json(result);
     });
 });
 
@@ -35,7 +45,7 @@ function needsGroup(group) {
         if (req.user && req.user.group === group)
             next();
         else
-            res.send(401, 'Unauthorized');
+            res.status(401).send('Unauthorized');
     };
 }
 

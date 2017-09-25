@@ -98,8 +98,8 @@ $(function () {
             price: form.find("[name='price']").val(),
             shortdes:form.find("[name='shortdes']").val(),
             description:form.find("[name='description']").val(),
-            featured:form.find("[name='featured']:checked").val(),
-            specifications:{}
+            featured:form.find("[name='featured']:checked").val()=='true',
+
         };
 
         $("div #size_group").each(function(i){
@@ -108,7 +108,7 @@ $(function () {
                 qty:$(this).find("input[name='size_qty']").val()
             });
         });
-        formData.specifications.sizes=sizes;
+        formData.sizes=sizes;
         $.post("/!admin/add_item",formData,function (result, status) {
             if(status === "success"){
                 $(".alert-zone").html("<div class='alert alert-success alert-dismissable text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Successfully added item: <a class='alert-link'>"+result.name+"</a></div>");
