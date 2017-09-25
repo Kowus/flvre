@@ -99,9 +99,7 @@ $(function () {
             shortdes:form.find("[name='shortdes']").val(),
             description:form.find("[name='description']").val(),
             featured:form.find("[name='featured']:checked").val()=='true',
-
         };
-
         $("div #size_group").each(function(i){
             sizes.push({
                 class:$(this).find("select[name='size_class'] option:selected").val(),
@@ -115,8 +113,28 @@ $(function () {
                 form.trigger("reset");
                 $("div #size_group").remove();
             }
-
-
         });
     });
+
+    $("#upload_image").click(function () {
+        // alert("Upload!");
+        var file_data = $("#image_box").prop("files")[0];
+        var form_data = new FormData();
+        form_data.append("file", file_data);
+        $.ajax({
+            url: "/!admin/upload/image",
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'post',
+            success:function (data) {
+                console.log(data);
+                alert(data);
+            }
+        });
+    });
+
+
 });

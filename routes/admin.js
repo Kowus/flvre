@@ -2,7 +2,23 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var Product = require('../models/products.model');
+var multipart = require('connect-multiparty');
+var uploader = require('express-fileuploader');
+var S3Strategy = require('express-fileuploader-s3');
 
+uploader.use(new S3Strategy({
+    uploadPath: '/uploads',
+    headers: {
+        'x-amz-acl': 'public-read'
+    },
+    options: {
+        key: process.env.S3_KEY_ID,
+        secret: process.env.S3_SECRET_ACCESS_KEY,
+        bucket: process.env.S3_BUCKET_NAME
+    }
+}));
+
+router.use('/upload/image', multipart());
 /* /!admin */
 router.get('/login', isNotLoggedIn, function (req, res, next) {
     res.render('admin-login', {title: "Admin Login", admin: true});
@@ -36,6 +52,19 @@ router.post('/add_item', needsGroup('admin'), function (req, res, next) {
         res.json(result);
     });
 });
+
+
+
+router.post('/upload/image', function(req, res, next) {
+    uploader.upload('s3', req.files['images'], function(err, files) {
+        if (err) {
+            return next(err);
+        }
+        res.json(files);
+    });
+});
+
+
 
 module.exports = router;
 
