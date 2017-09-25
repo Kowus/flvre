@@ -72,28 +72,35 @@ $(function () {
         window.location = window.location.pathname + "?page=" + page + "&show=" + newShow + "&sort=" + sort;
     });
 
-    $("#submitItem").click(function () {
-        $("#addItemForm").submit();
-    });
 
     $('a.back').click(function () {
         parent.history.back();
         return false;
     });
     $("#newSizeClass").click(function () {
-        var currCount = $("div #size_group");
         $(".size-zone").append("<div class='input-group' id='size_group'>" +
             "<div class='input-group-btn'>\n" +
             "<select class='btn btn-default btn-sm' required name='size_class' id='size_class'>\n" +
             "<option>Size</option>\n" +
-            "<option>Small</option>\n" +
-            "<option>Medium</option>\n" +
-            "<option>Large</option>" +
+            "<option value='small'>Small</option>\n" +
+            "<option value='medium'>Medium</option>\n" +
+            "<option value='large'>Large</option>" +
             "</select></div>" +
             "<input class='form-control' type='number' min='0' pattern='\d*' step='1' required name='size_qty' placeholder='Quantity' id='size_qty'><span class='input-group-btn' id='trash_it'><button class='btn btn-danger btn-sm' type='button' onclick='$(this).parents()[1].remove()'><i class='fa fa-trash-o'></i></button></span>"
             + "</div>");
     });
 
+    $("#submitItem").click(function () {
+        var form = $("#addItemForm");
+        var formData = {
+            name: form.find("[name='name']").val(),
+            price: form.find("[name='price']").val(),
+            shortdes:form.find("[name='shortdes']").val(),
+            description:form.find("[name='description']").val(),
+            featured:form.find("[name='featured']").val(),
+        };
+
+    });
 
 });
 // $("div #size_group")[$("div #size_group").index(0)].remove();
