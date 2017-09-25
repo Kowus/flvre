@@ -109,8 +109,14 @@ $(function () {
             });
         });
         formData.specifications.sizes=sizes;
-        console.log(formData);
-    });
+        $.post("/sul",formData,function (result, status) {
+            if(status === "success"){
+                $(".alert-zone").html("<div class='alert alert-success alert-dismissable text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Successfully added item: <a class='alert-link'>"+result.name+"</a></div>");
+                form.trigger("reset");
+                $("div #size_group").remove();
+            }
 
+
+        });
+    });
 });
-// $("div #size_group")[$("div #size_group").index(0)].remove();

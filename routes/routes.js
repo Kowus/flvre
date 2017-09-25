@@ -16,7 +16,7 @@ module.exports = function (app, passport) {
             });
         });
     });
-    app.post("/sul", function (req, res) {
+    app.post("/sul", needsGroup('admin'),function (req, res) {
         res.json(req.body)
     })
     app.get('/login', isNotLoggedIn, function (req, res, next) {
@@ -80,23 +80,17 @@ var needsGroup = function (group) {
         if (req.user && req.user.group === group)
             next();
         else
-            res.send(401, 'Unauthorized');
+            res.status(401).send('Unauthorized');
     };
 };
 
-// route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
-
     res.redirect('/login');
 }
 
-// route middleware to make sure a user is logged in
 function isNotLoggedIn(req, res, next) {
-
     if (req.isAuthenticated())
         res.redirect('/profile');
     else
@@ -109,4 +103,4 @@ var buildResultSet = function (docs) {
         result.push(docs[object]);
     }
     return result;
-}
+};
