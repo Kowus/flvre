@@ -92,14 +92,24 @@ $(function () {
 
     $("#submitItem").click(function () {
         var form = $("#addItemForm");
+        var sizes=[];
         var formData = {
             name: form.find("[name='name']").val(),
             price: form.find("[name='price']").val(),
             shortdes:form.find("[name='shortdes']").val(),
             description:form.find("[name='description']").val(),
-            featured:form.find("[name='featured']").val(),
+            featured:form.find("[name='featured']:checked").val(),
+            specifications:{}
         };
 
+        $("div #size_group").each(function(i){
+            sizes.push({
+                class:$(this).find("select[name='size_class'] option:selected").val(),
+                qty:$(this).find("input[name='size_qty']").val()
+            });
+        });
+        formData.specifications.sizes=sizes;
+        console.log(formData);
     });
 
 });
