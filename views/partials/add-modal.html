@@ -19,7 +19,7 @@
                             <span class="input-group-btn">
                                 <input type="file" name="images" class="btn btn-default btn-sm" placeholder="Click to select image..." id="image_box"></span>
                             <span class="input-group-btn">
-                                <input class="btn btn-default btn-sm" type="image" title="image will display here after uploading" id="img_display" style="width: 80px;height:80px;object-fit: cover;">
+                                <input class="btn btn-default btn-sm" type="image" alt="no image uploaded" title="image will display here after uploading" id="img_display" style="width: 80px;height:80px;object-fit: cover;">
                             </span>
                             <span class="input-group-btn"><button type="button" class="btn btn-warning btn-sm" id="upload_image">Upload Image</button></span>
                         </div>
@@ -55,10 +55,15 @@
                     </fieldset>
                     <fieldset>
                         <hr class="small">
-                        <label><h4>Sizes</h4></label>
-                        <p class="btn btn-primary pull-right" id="newSizeClass">New</p>
+                        <label><h5>Sizes</h5></label>
+                        <p class="btn btn-primary pull-right btn-sm" id="newSizeClass">New</p>
                         <div class="size-zone"></div>
                         <hr class="small">
+                    </fieldset>
+                    <fieldset>
+                        <label><h5>Tags</h5></label>
+                        <p class="btn btn-warning pull-right btn-sm" id="newTag">New</p>
+                        <div class="form-inline form-group" id="tagZone"></div>
                     </fieldset>
                 </form>
             </div>

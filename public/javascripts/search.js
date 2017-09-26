@@ -80,6 +80,7 @@ $(function () {
         parent.history.back();
         return false;
     });
+
     $("#newSizeClass").click(function () {
         $(".size-zone").append("<div class='input-group' id='size_group'>" +
             "<div class='input-group-btn'>\n" +
@@ -93,28 +94,44 @@ $(function () {
             + "</div>");
     });
 
+    $("#newTag").click(function () {
+        $("#tagZone").append("<div class='input-group' id='tag_group'>" +
+            "<input class='form-control' name='tags' placeholder='tag' autofocus><span class='input-group-btn' id='trash_it'><button class='btn btn-danger btn-sm' type='button' onclick='$(this).parents()[1].remove()'><i class='fa fa-trash-o'></i></button></span>" +
+            "</div>");
+    });
+
     $("#submitItem").click(function () {
         var form = $("#addItemForm");
         var sizes=[];
+        var tags = [];
+        $("div #tag_group").each(function (i) {
+            tags.push($(this).find("[name='tags']").val()) ;
+        });
         var formData = {
             name: form.find("[name='name']").val(),
             price: form.find("[name='price']").val(),
             shortdes:form.find("[name='shortdes']").val(),
             description:form.find("[name='description']").val(),
-            featured:form.find("[name='featured']:checked").val()=='true',
+            featured:form.find("[name='featured']:checked").val(),
+            image:$("#img_display").attr("src"),
+            tags:tags
         };
+
         $("div #size_group").each(function(i){
             sizes.push({
                 class:$(this).find("select[name='size_class'] option:selected").val(),
                 qty:$(this).find("input[name='size_qty']").val()
             });
         });
-        formData.sizes=sizes;
+        formData.sizes=JSON.stringify(sizes);
+
+
         $.post("/!admin/add_item",formData,function (result, status) {
             if(status === "success"){
                 $(".alert-zone").html("<div class='alert alert-success alert-dismissable text-center'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Successfully added item: <a class='alert-link'>"+result.name+"</a></div>");
                 form.trigger("reset");
                 $("div #size_group").remove();
+                $("div #tag_group").remove();
             }
         });
     });

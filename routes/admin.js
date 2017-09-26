@@ -36,19 +36,20 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 router.post('/add_item', needsGroup('admin'), function (req, res, next) {
+    console.log(req.body);
     var newProduct = new Product({
+        description:req.body.description,
+        featured:req.body.featured=='true',
+        images:{thumb:req.body.image},
         name:req.body.name,
         price:req.body.price,
         shortdes:req.body.shortdes,
-        description:req.body.description,
-        featured:req.body.featured,
         specifications:{
-            sizes:req.body.sizes
-        }
+            sizes:JSON.parse(req.body.sizes)
+        },tags:req.body["tags[]"]
     });
     newProduct.save(function (err, result) {
         if (err) return res.json({status: 501, result: err});
-        console.log(result);
         res.json(result);
     });
 });

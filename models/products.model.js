@@ -21,7 +21,7 @@ var productShema = mongoose.Schema({
     shortdes:String,
     specifications: {
         sizes: [{
-            class: Array,
+            class: String,
             qty: Number
         }]
     },
