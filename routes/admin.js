@@ -54,8 +54,6 @@ router.post('/add_item', needsGroup('admin'), function (req, res, next) {
     });
 });
 
-
-
 router.post('/upload/image', needsGroup('admin'), function(req, res, next) {
     console.log(req.files['images']);
     uploader.upload('s3', req.files['images'], function(err, files) {
